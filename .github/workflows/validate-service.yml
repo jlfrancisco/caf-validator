@@ -24,4 +24,4 @@ jobs:
         run: pip install pyyaml
 
       - name: Run validator
-        run: python validator.py --mode=warn service.yaml
+        run: python validator.py --mode=enforce service.yaml
