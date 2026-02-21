@@ -1,0 +1,10 @@
+schema_version: "1.0"
+service_name: "my-service"
+owner: codeforafrica
+env: "prod"
+data_sensitivity: "low"
+runbook_url: "www.url.com/doc/fix-bug_high_5xx_rate.pdf"
+alerts:
+  - cpu_high
+  - disk_full
+  - high_5xx_rate

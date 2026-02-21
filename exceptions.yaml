@@ -1,0 +1,5 @@
+- rule: "prod_symptom_alert"
+  service: "my-service"
+  reason: "Migrating to new monitoring stack"
+  expires: "2026-06-01"
+  approved_by: "platform-team"

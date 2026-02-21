@@ -1,0 +1,7 @@
+schema_version: "1.0"
+service_name: "my-service"
+env: "prod"
+data_sensitivity: "low"
+alerts:
+  - cpu_high
+  - disk_full

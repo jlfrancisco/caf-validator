@@ -1,0 +1,27 @@
+name: Validate service.yaml
+
+on:
+  pull_request:
+    paths:
+      - "service.yaml"
+      - "validator.py"
+
+jobs:
+  validate:
+    name: Service YAML Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run validator
+        run: python validator.py --mode=warn service.yaml
