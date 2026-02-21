@@ -23,5 +23,13 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
+      - name: Set validation mode
+        run: |
+          if [ "${{ github.base_ref }}" = "main" ]; then
+            echo "MODE=enforce" >> $GITHUB_ENV
+          else
+            echo "MODE=warn" >> $GITHUB_ENV
+          fi
+
       - name: Run validator
-        run: python validator.py --mode=enforce service.yaml
+        run: python validator.py --mode=$MODE service.yaml

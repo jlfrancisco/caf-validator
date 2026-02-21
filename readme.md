@@ -171,6 +171,27 @@ Phase 4: We migrate the remaining 2 repositories, typically the most critical or
 Exceptions management: We keep a shared exceptions.yaml at the org level for teams that need more time, with a firm expires date no longer than 30 days out. This prevents exceptions from becoming permanent workarounds. It enables tracking progress in a simple table — repo name, current schema version, validator mode, and status — so nothing gets forgotten across 10 repos.
 
 
+## CI Configuration
+
+The github actions will run the validator with different modes depending on the branch where the Pull Request is targetting.
+
+If the PR is targetting the `main` branch, the `enforce` mode is used. In other cases, in particular a 10-repo rollout, the `warn` mode is used. 
+
+``` YAML
+- name: Set validation mode
+  run: |
+    if [ "${{ github.base_ref }}" = "main" ]; then
+      echo "MODE=enforce" >> $GITHUB_ENV
+    else
+      echo "MODE=warn" >> $GITHUB_ENV
+    fi
+```
+
+## AI Usage
+
+For this exercise, Claude Code AI has been used to generate the python codebase. I spent most of the 3 hours understanding and writing the code specifications and the documentation.
+
+
 
 
 
