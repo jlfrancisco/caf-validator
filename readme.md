@@ -187,6 +187,10 @@ If the PR is targetting the `main` branch, the `enforce` mode is used. In other 
     fi
 ```
 
+## AI Usage
+
+For this exercise, Claude Code AI has been used to generate the python codebase. I spent most of the 3 hours understanding and writing the code specifications and the documentation.
+
 
 
 
