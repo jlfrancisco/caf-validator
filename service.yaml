@@ -1,5 +1,5 @@
 schema_version: "1.0"
-service_name: "my-service"
+service_name: "my-service-1.0"
 env: "prod"
 data_sensitivity: "low"
 alerts:
