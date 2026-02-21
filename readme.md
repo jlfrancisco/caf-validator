@@ -3,10 +3,10 @@
 This application validates a service.yaml file against a platform contract and reports
 any issues in a way that helps a product team fix them quickly.
 
-## Enrolment process
+## Enrollment process
 
 Each product team must:
-* create download this repository
+* download this repository
 * create a new branch
 * add a `service.yaml` file with the alerts 
 * create a Pull Requests
