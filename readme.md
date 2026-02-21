@@ -43,7 +43,7 @@ Infrastructure alerts
 We can find below the list of validation rules we implement. For each rule, you will also find the error message.
 
 1. REQUIRED_FIELDS  
-Rule: Required fields must be present and non-empty
+### Rule: Required fields must be present and non-empty
 
 ```
 FAIL: REQUIRED_FIELDS
@@ -56,7 +56,7 @@ Fix: Required fields must be present and non-empty
 ```
 
 2. ENVIRONMENT_NAME_ALERT
-Rule: env must be one of dev, staging and prod
+### Rule: env must be one of dev, staging and prod
 ```
 FAIL: ENVIRONMENT_NAME_ALERT
 Service: MY_SERVICE
@@ -68,7 +68,7 @@ Example: "env: prod"
 ```
 
 3. DATA_SENSITIVITY_NAME_ALERT
-Rule: data_sensitivity must be one of low, medium and high 
+### Rule: data_sensitivity must be one of low, medium and high 
 ```
 FAIL: DATA_SENSITIVITY_NAME_ALERT
 Service: MY_SERVICE 
@@ -80,7 +80,7 @@ Example: "data_sensitivity: medium"
 ```
 
 4. PROD_SYMPTOM_ALERT 
-Rule: if env is prod, there must be at least, one users-impacted alert in alerts list 
+### Rule: if env is prod, there must be at least, one users-impacted alert in alerts list 
 ```
 FAIL: PROD_SYMPTOM_ALERT
 Service: MY_SERVICE
@@ -95,7 +95,7 @@ Fix: Add an alert that monitors service behaviour, not just resources
 ```
 
 5. RUNBOOK_URL_ALERT 
-Rule: if env is prod, required runbook_url 
+### Rule: if env is prod, required runbook_url 
 ```
 FAIL: RUNBOOK_URL_ALERT
 Service: MY_SERVICE
@@ -106,7 +106,7 @@ Need: At least one runbook url must be specified.
 ```
 
 6.  BACKUPS_ENABLED_ALERT
-Rule: if env is prod and data_sensitivity is high, backups_enabled: true 
+### Rule: if env is prod and data_sensitivity is high, backups_enabled: true 
 ```
 FAIL: BACKUPS_ENABLED_ALERT
 Service: MY_SERVICE
@@ -120,15 +120,17 @@ Need: At least one backup_enabled must be specified.
 
 If some alerts must be deactivated for a temporary time for any reason, the exceptions should be added the exeptions.yaml file as a list element 
 
+```YAML
 - rule: "VALIDATION_RULE"
   service: service-name 
   reason: "Text describing the reason why this exception"
   expires: "expiration-date of this exception"
   approved_by: "team name that approved this exception"
+```
 
 In case the exception is applied, a message will be added to outputs. The exit code is 0, even in enforce mode.
 
-```
+```YAML
 [EXCEPTION] exception is applied
 Reason: THIS_IS_THE_REASON
 expires: EXPIRATION_DATE
@@ -137,7 +139,9 @@ approved_by: APPROVED_BY
 
 ## ENFORCEMENT MODES
 
-Command: $ python3 validation.py --mode=warn resource.yaml exceptions.yaml
+```python 
+    $ python3 validation.py --mode=warn resource.yaml exceptions.yaml
+```
 
 - `warn` mode: print findings with an exit code of 0
 - `enforce` mode: print finding with a non-zero exit code
